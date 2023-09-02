@@ -12,10 +12,11 @@ app.config['SECRET_KEY'] = os.environ.get('FLASK_KEY')
 
 @app.route('/')
 def home():
-    age = dt.datetime.today().year - BIRTH_YEAR - 1
+    year = dt.datetime.today().year
+    age = year - BIRTH_YEAR - 1
     if dt.datetime.today().month > BIRTH_MONTH:
         age = age + 1
-    return render_template('index.html', age=age)
+    return render_template('index.html', age=age, year=year)
 
 
 if __name__ == "__main__":
